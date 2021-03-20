@@ -8,6 +8,7 @@ import java.util.HashMap;
  * @Date 2021/3/18
  */
 public class ServiceMachine {
+    //服务器ID
     private Integer id;
 
     private String serviceName;

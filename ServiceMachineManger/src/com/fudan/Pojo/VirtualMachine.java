@@ -7,12 +7,6 @@ package fudan.Pojo;
  * 虚拟机类
  */
 public class VirtualMachine {
-    /**
-     * 虚拟机ID
-     * 该值会在用户请求创建虚拟机的时候赋值
-     */
-    private Integer vmId;
-
     //虚拟机类型
     private String vmName;
 
@@ -24,14 +18,6 @@ public class VirtualMachine {
     private Integer type;
 
     public VirtualMachine() {
-    }
-
-    public Integer getVmId() {
-        return vmId;
-    }
-
-    public void setVmId(Integer vmId) {
-        this.vmId = vmId;
     }
 
     public String getVmName() {
