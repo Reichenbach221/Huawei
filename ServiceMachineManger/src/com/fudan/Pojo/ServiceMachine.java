@@ -22,6 +22,7 @@ public class ServiceMachine {
 
     private Integer dailyCost;
 
+    //性价比
     private float costPriceRate;
 
 

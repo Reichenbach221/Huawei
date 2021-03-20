@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * @author zhangxing
  * @Date 2021/3/20
+ * 日常请求封装类
  */
 public class DailyRequest {
     //今天的请求数量

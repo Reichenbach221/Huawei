@@ -1,10 +1,14 @@
 package fudan.Pojo;
 
+
 /**
  * @author zhangxing
  * @Date 2021/3/18
+ * 虚拟机类
  */
 public class VirtualMachine {
+
+    private Integer vmId;
 
     private String vmName;
 
@@ -17,11 +21,20 @@ public class VirtualMachine {
     public VirtualMachine() {
     }
 
+    public Integer getVmId() {
+        return vmId;
+    }
+
+    public void setVmId(Integer vmId) {
+        this.vmId = vmId;
+    }
+
     public String getVmName() {
         return vmName;
     }
 
     public void setVmName(String vmName) {
+        this.vmId = Utils.getVmid(vmName);
         this.vmName = vmName;
     }
 
