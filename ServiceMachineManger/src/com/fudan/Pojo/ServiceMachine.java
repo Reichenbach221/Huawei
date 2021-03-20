@@ -16,15 +16,35 @@ public class ServiceMachine {
 
     private Integer memoryNumber;
     //节点信息
-    private HashMap<String,ServiceNode> nodes;
+    private HashMap<NodeType,ServiceNode> nodes;
 
     private Integer cost;
 
     private Integer dailyCost;
 
+    private float costPriceRate;
+
 
     public ServiceMachine() {
         nodes = new HashMap<>(2);
+        nodes.put(NodeType.A,new ServiceNode(NodeType.A));
+        nodes.put(NodeType.B,new ServiceNode(NodeType.B));
+    }
+
+    public HashMap<NodeType, ServiceNode> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(HashMap<NodeType, ServiceNode> nodes) {
+        this.nodes = nodes;
+    }
+
+    public float getCostPriceRate() {
+        return costPriceRate;
+    }
+
+    public void setCostPriceRate(float costPriceRate) {
+        this.costPriceRate = costPriceRate;
     }
 
     public Integer getId() {
@@ -48,15 +68,9 @@ public class ServiceMachine {
     }
 
     public void setCpuNumber(Integer cpuNumber) {
+        nodes.get(NodeType.A).setCpuNumber(cpuNumber/2);
+        nodes.get(NodeType.B).setCpuNumber(cpuNumber/2);
         this.cpuNumber = cpuNumber;
-    }
-
-    public HashMap<String, ServiceNode> getNodes() {
-        return nodes;
-    }
-
-    public void setNodes(HashMap<String, ServiceNode> nodes) {
-        this.nodes = nodes;
     }
 
     public Integer getMemoryNumber() {
@@ -64,6 +78,8 @@ public class ServiceMachine {
     }
 
     public void setMemoryNumber(Integer memoryNumber) {
+        nodes.get(NodeType.A).setMemoryNumber(memoryNumber/2);
+        nodes.get(NodeType.B).setMemoryNumber(memoryNumber/2);
         this.memoryNumber = memoryNumber;
     }
 

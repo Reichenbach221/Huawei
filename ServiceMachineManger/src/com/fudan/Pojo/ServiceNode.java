@@ -5,7 +5,7 @@ package fudan.Pojo;
  * @Date 2021/3/20
  */
 public class ServiceNode {
-    private String nodeType;
+    private NodeType nodeType;
 
     private Integer cpuNumber;
 
@@ -13,18 +13,20 @@ public class ServiceNode {
 
     public ServiceNode() {
     }
-
-    public ServiceNode(String nodeType, Integer cpuNumber, Integer memoryNumber) {
+    public ServiceNode(NodeType nodeType){
+        this.nodeType =  nodeType;
+    }
+    public ServiceNode(NodeType nodeType, Integer cpuNumber, Integer memoryNumber) {
         this.nodeType = nodeType;
         this.cpuNumber = cpuNumber;
         this.memoryNumber = memoryNumber;
     }
 
-    public String getNodeType() {
+    public NodeType getNodeType() {
         return nodeType;
     }
 
-    public void setNodeType(String nodeType) {
+    public void setNodeType(NodeType nodeType) {
         this.nodeType = nodeType;
     }
 
