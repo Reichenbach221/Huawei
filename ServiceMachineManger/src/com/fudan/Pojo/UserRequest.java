@@ -3,7 +3,7 @@ package fudan.Pojo;
 /**
  * 用户请求
  * @author zhangxing
- * @Date 2021/3/20
+ * @Date 2021/3/20/13:18
  */
 public class UserRequest {
     private String operationType;
