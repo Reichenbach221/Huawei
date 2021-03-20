@@ -1,5 +1,7 @@
 package fudan.Pojo;
 
+import java.util.List;
+
 /**
  * @author zhangxing
  * @Date 2021/3/20
@@ -19,5 +21,20 @@ public class Utils {
             value += item;
         }
         return value;
+    }
+
+    public static VirtualMachine getVirtualMachine(String vmName){
+        List<VirtualMachine> machineList = PublicDataPool.virtualToSale;
+        int left=0,right=machineList.size(),mid=0;
+        while(left<right){
+            mid = (left+right)/2;
+            VirtualMachine virtualMachine = machineList.get(mid);
+            if(virtualMachine.getVmName().compareTo(vmName) < 0){
+                left = (left+right)/2 + 1;
+            }else{
+                right = (left+right)/2 - 1;
+            }
+        }
+        return machineList.get(mid);
     }
 }
