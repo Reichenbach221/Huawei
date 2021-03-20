@@ -14,6 +14,10 @@ public class Start {
     StockServiceInfo serviceInfo = PublicDataPool.stockServiceInfo;
 
     Map<Integer,List<Integer>> serviceToVMachine = PublicDataPool.serviceToVitualMachine;
+
+    List<ServiceMachine> servicesToSale = PublicDataPool.servicesToSale;
+
+
     /**
      * 对数据进行初始化操作
      */
@@ -54,6 +58,13 @@ public class Start {
 
     }
 
+    /**
+     * 更具服务器性价比购买服务器
+     */
+    public void buyService(){
+
+    }
+
 
     /**
      * 更新虚拟机和服务器之间的关系
@@ -74,25 +85,40 @@ public class Start {
      * @param virtualMachine
      */
     public void updateStockService(StockService stockService,VirtualMachine virtualMachine,Integer vmId){
-        //更新存量服务器单个的统计信息 cpu+memory
-        stockService.setCpuNumber(stockService.getCpuNumber()-virtualMachine.getCpuNumber());
-        stockService.setMemoryNumber(stockService.getMemoryNumber() - virtualMachine.getMemoryNumber());
-
         //创建存量服务器上的虚拟机信息
         VirtualMachineOnService onService = new VirtualMachineOnService();
         onService.setVmid(vmId);
+        ArrangeType arrangeType = putVirtualToservice(virtualMachine,stockService);
+        onService.setArrangeType(arrangeType);
+        onService.setVirtualMachine(virtualMachine);
+        //更新存量服务器上的虚拟机信息
+        stockService.getVirtualMachines().add(onService);
+    }
+
+    /**
+     * 将虚拟机 部署到 指定服务器
+     * 返回部署类型
+     * @param virtualMachine
+     * @param stockService
+     * @return
+     */
+    public ArrangeType putVirtualToservice(VirtualMachine virtualMachine,StockService stockService){
+        //更新存量服务器单个的统计信息 cpu+memory
+        stockService.setCpuNumber(stockService.getCpuNumber()-virtualMachine.getCpuNumber());
+        stockService.setMemoryNumber(stockService.getMemoryNumber() - virtualMachine.getMemoryNumber());
         HashMap<NodeType,ServiceNode> map = stockService.getNodes();
+
         if(virtualMachine.getType() == 0){
             //单节点
             if(map.get(NodeType.A).getCpuNumber() > virtualMachine.getCpuNumber() &&
                     map.get(NodeType.A).getMemoryNumber() > virtualMachine.getMemoryNumber()){
                 map.get(NodeType.A).setCpuNumber(map.get(NodeType.A) .getCpuNumber() - virtualMachine.getCpuNumber());
                 map.get(NodeType.A).setMemoryNumber(map.get(NodeType.A) .getMemoryNumber() - virtualMachine.getMemoryNumber());
-                onService.setArrangeType(ArrangeType.A);
+                return ArrangeType.A;
             }else{
                 map.get(NodeType.B).setCpuNumber(map.get(NodeType.B) .getCpuNumber() - virtualMachine.getCpuNumber());
                 map.get(NodeType.B).setMemoryNumber(map.get(NodeType.B) .getMemoryNumber() - virtualMachine.getMemoryNumber());
-                onService.setArrangeType(ArrangeType.B);
+                return ArrangeType.B;
             }
         }else{
             //双节点
@@ -100,11 +126,8 @@ public class Start {
             map.get(NodeType.A).setMemoryNumber(map.get(NodeType.A) .getMemoryNumber() - virtualMachine.getMemoryNumber()/2);
             map.get(NodeType.B).setCpuNumber(map.get(NodeType.B) .getCpuNumber() - virtualMachine.getCpuNumber()/2);
             map.get(NodeType.B).setMemoryNumber(map.get(NodeType.B) .getMemoryNumber() - virtualMachine.getMemoryNumber()/2);
-            onService.setArrangeType(ArrangeType.ALL);
+            return ArrangeType.ALL;
         }
-        onService.setVirtualMachine(virtualMachine);
-        //更新存量服务器上的虚拟机信息
-        stockService.getVirtualMachines().add(onService);
     }
 
     /**
