@@ -1,6 +1,8 @@
 package fudan.Pojo;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author zhangxing
@@ -8,17 +10,30 @@ import java.util.HashMap;
  * 存量服务器类
  */
 public class StockService {
+    //服务器ID
     private Integer id;
 
     private Integer cpuNumber;
 
     private Integer memoryNumber;
 
+    //虚拟机列表
+    private List<VirtualMachineOnService> virtualMachines;
+
     //节点信息
     private HashMap<NodeType,ServiceNode> nodes;
 
     public StockService() {
         nodes = new HashMap<>(2);
+        virtualMachines = new LinkedList<>();
+    }
+
+    public List<VirtualMachineOnService> getVirtualMachines() {
+        return virtualMachines;
+    }
+
+    public void setVirtualMachines(List<VirtualMachineOnService> virtualMachines) {
+        this.virtualMachines = virtualMachines;
     }
 
     public Integer getId() {

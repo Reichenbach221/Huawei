@@ -24,8 +24,9 @@ public class PublicDataPool {
      * -----     ---    ---
      * |    |
      * -----
+     * <服务器ID,虚拟机id list>
      */
-    public static Map<Integer,List<VirtualMachine>> serviceToVitualMachine = new TreeMap<>();
+    public static Map<Integer,List<Integer>> serviceToVitualMachine = new TreeMap<>();
 
     //存量服务器信息
     public static StockServiceInfo stockServiceInfo = new StockServiceInfo();
