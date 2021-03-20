@@ -1,12 +1,11 @@
 package fudan.Pojo;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author zhangxing
  * @Date 2021/3/18
+ * 数据池
  */
 public class PublicDataPool {
     //可以购买的服务器列表
@@ -18,6 +17,15 @@ public class PublicDataPool {
     public static List<ServiceMachine> haveServices = new ArrayList<>();
     //已经购买的虚拟机列表
     public static List<VirtualMachine> runingVms = new ArrayList<>();
+    /**
+     * 服务器与虚拟机的映射关系
+     * -----      ---    ---
+     * |    |--->|  |-->|  |
+     * -----     ---    ---
+     * |    |
+     * -----
+     */
+    public static Map<ServiceMachine,List<VirtualMachine>> serviceToVitualMachine = new TreeMap<>();
     //存量服务器列表
     public static List<StockService> stockService = new LinkedList<>();
     //日常请求

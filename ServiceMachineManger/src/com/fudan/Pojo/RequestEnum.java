@@ -3,6 +3,7 @@ package fudan.Pojo;
 /**
  * @author zhangxing
  * @Date 2021/3/20
+ * 请求类型
  */
 public enum RequestEnum {
     ADD(1,"add"),

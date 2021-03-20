@@ -3,6 +3,7 @@ package fudan.Pojo;
 /**
  * @author zhangxing
  * @Date 2021/3/20
+ * 服务器节点信息类
  */
 public class ServiceNode {
     private NodeType nodeType;

@@ -5,6 +5,7 @@ import java.util.HashMap;
 /**
  * @author zhangxing
  * @Date 2021/3/20
+ * 存量服务器类
  */
 public class StockService {
     private Integer id;
