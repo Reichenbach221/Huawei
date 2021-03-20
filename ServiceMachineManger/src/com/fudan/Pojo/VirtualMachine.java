@@ -7,15 +7,20 @@ package fudan.Pojo;
  * 虚拟机类
  */
 public class VirtualMachine {
-
+    /**
+     * 虚拟机ID
+     * 该值会在用户请求创建虚拟机的时候赋值
+     */
     private Integer vmId;
 
+    //虚拟机类型
     private String vmName;
 
     private Integer cpuNumber;
 
     private Integer memoryNumber;
 
+    //虚拟机部署类型 0 单节点 1双节点
     private Integer type;
 
     public VirtualMachine() {
@@ -34,7 +39,6 @@ public class VirtualMachine {
     }
 
     public void setVmName(String vmName) {
-        this.vmId = Utils.getVmid(vmName);
         this.vmName = vmName;
     }
 
@@ -60,5 +64,15 @@ public class VirtualMachine {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "VirtualMachine{" +
+                "vmName='" + vmName + '\'' +
+                ", cpuNumber=" + cpuNumber +
+                ", memoryNumber=" + memoryNumber +
+                ", type=" + type +
+                '}';
     }
 }

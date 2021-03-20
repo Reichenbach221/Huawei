@@ -25,9 +25,10 @@ public class PublicDataPool {
      * |    |
      * -----
      */
-    public static Map<ServiceMachine,List<VirtualMachine>> serviceToVitualMachine = new TreeMap<>();
-    //存量服务器列表
-    public static List<StockService> stockService = new LinkedList<>();
+    public static Map<Integer,List<VirtualMachine>> serviceToVitualMachine = new TreeMap<>();
+
+    //存量服务器信息
+    public static StockServiceInfo stockServiceInfo = new StockServiceInfo();
     //日常请求
     public static List<DailyRequest> dailyRequests = new LinkedList<>();
 }

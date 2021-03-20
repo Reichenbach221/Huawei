@@ -15,9 +15,10 @@ public class StockService {
     private Integer memoryNumber;
 
     //节点信息
-    private HashMap<String,ServiceNode> nodes;
+    private HashMap<NodeType,ServiceNode> nodes;
 
     public StockService() {
+        nodes = new HashMap<>(2);
     }
 
     public Integer getId() {
@@ -44,11 +45,11 @@ public class StockService {
         this.memoryNumber = memoryNumber;
     }
 
-    public HashMap<String, ServiceNode> getNodes() {
+    public HashMap<NodeType, ServiceNode> getNodes() {
         return nodes;
     }
 
-    public void setNodes(HashMap<String, ServiceNode> nodes) {
+    public void setNodes(HashMap<NodeType, ServiceNode> nodes) {
         this.nodes = nodes;
     }
 }

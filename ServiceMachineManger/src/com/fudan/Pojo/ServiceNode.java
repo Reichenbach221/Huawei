@@ -6,6 +6,7 @@ package fudan.Pojo;
  * 服务器节点信息类
  */
 public class ServiceNode {
+    //节点类型
     private NodeType nodeType;
 
     private Integer cpuNumber;
